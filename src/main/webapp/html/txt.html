@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Insert title here</title>
+<link href="/webjars/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" media="screen"></link>
+<script type="text/javascript" src="/webjars/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" th:src="/webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var queryString = document.location.search.substring(1);
+		var params = parseQueryString(queryString);
+		var file = 'file' in params ? params.file : "";
+		$.ajax({
+	        url: file,
+	        dataType: 'text',
+	        contentType: "application/x-www-form-urlencoded; charset=utf-8", 
+	        success: function(data) {
+	        	$("#txt").html(data);
+	        	/* //根据换行符分隔每一行
+	        	var lineArray = data.split('\n');
+	        	//遍历每一行
+	        	for(var i = 0; i<lineArray.length;i++){
+	        	    var line = lineArray[i];
+	        	    $("#txt").html(line);
+	        	} */
+	        }
+	    });
+	})
+	function parseQueryString(query) {
+	  var parts = query.split('&');
+	  var params = {};
+	  for (var i = 0, ii = parts.length; i < ii; ++i) {
+	    var param = parts[i].split('=');
+	    var key = param[0].toLowerCase();
+	    var value = param.length > 1 ? param[1] : null;
+	    params[decodeURIComponent(key)] = decodeURIComponent(value);
+	  }
+	  return params;
+	}
+</script>
+<style type="text/css">
+html { overflow-x: hidden; overflow-y: auto; }
+</style>
+</head>
+<body>
+<div class="row" style="text-align: center;margin-top: 30px;">
+	<div style="width: 80%;height: auto;" id="txt"></div>	
+</div>
+</body>
+</html>

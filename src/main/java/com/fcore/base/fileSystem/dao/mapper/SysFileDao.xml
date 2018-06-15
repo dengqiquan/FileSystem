@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fcore.base.fileSystem.dao.SysFileDao">
+	<resultMap id="result_SysFileMap" type="com.fcore.base.fileSystem.entity.SysFile">
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+	id,name,size,type,suffix,path,isDelete,createTime,updateTime,dirId,createUserName,updateUserName,previewPath
+	</sql>
+	
+    <!-- 单条新增  -->
+	<insert id="add" parameterType="com.fcore.base.fileSystem.entity.SysFile">
+		<![CDATA[
+		INSERT INTO sys_file(id,name,size,type,suffix,path,isDelete,createTime,updateTime,dirId,createUserName,updateUserName,previewPath) 
+		VALUES 
+		(#{id},#{name},#{size},#{type},#{suffix},#{path},#{isDelete},#{createTime},#{updateTime},#{dirId},#{createUserName},#{updateUserName},#{previewPath})
+		]]>
+		<selectKey resultType="long" keyProperty="id">
+			select @@IDENTITY as id
+		</selectKey>
+    </insert>
+    
+     <!-- 根据id查询 -->
+	<select id="getById" parameterType="long" resultMap="result_SysFileMap">
+		select <include refid="Base_Column_List"/> from sys_file where id=#{id}
+	</select>
+	
+	<!-- 分页查询列表 -->
+	<select id="getList"  resultMap="result_SysFileMap" parameterType="com.fcore.base.fileSystem.entity.SysFile">
+    	select <include refid="Base_Column_List"/> from sys_file
+    	where isDelete = 0
+    	order by id desc 
+    	<if test="pageSize!=null and pageSize>0 and pageNumber!=null and pageNumber>0">
+    		limit ${(pageNumber-1)*pageSize},#{pageSize}
+    	</if>
+    </select>
+    <select id="getCount" parameterType="com.fcore.base.fileSystem.entity.SysFile" resultType="int">
+   		 select count(1) from sys_file
+   		 where isDelete = 0
+    </select>
+
+	
+	<!-- 根据id修改记录 -->
+	<update id="update" parameterType="com.fcore.base.fileSystem.entity.SysFile">
+		update sys_file
+		<trim prefix="set" prefixOverrides=",">
+			<if test="name != null and name != ''">
+			,name = #{name}
+			</if>
+			<if test="size != null and size != ''">
+			,size = #{size}
+			</if>
+			<if test="type != null and type != ''">
+			,type = #{type}
+			</if>
+			<if test="suffix != null and suffix != ''">
+			,suffix = #{suffix}
+			</if>
+			<if test="path != null and path != ''">
+			,path = #{path}
+			</if>
+			<if test="isDelete != null and isDelete >0">
+			,isDelete = #{isDelete}
+			</if>
+			<if test="createTime != null and createTime != ''">
+			,createTime = #{createTime}
+			</if>
+			<if test="updateTime != null and updateTime != ''">
+			,updateTime = #{updateTime}
+			</if>
+			<if test="dirId != null and dirId >0">
+			,dirId = #{dirId}
+			</if>
+			<if test="createUserName != null and createUserName != ''">
+			,createUserName = #{createUserName}
+			</if>
+			<if test="updateUserName != null and updateUserName != ''">
+			,updateUserName = #{updateUserName}
+			</if>
+			<if test="previewPath != null and previewPath != ''">
+			,previewPath = #{previewPath}
+			</if>
+		</trim>
+		where id=#{id}
+	</update>
+	
+	<!-- 根据条件查询 -->
+	<select id="getByParams" resultMap="result_SysFileMap" parameterType="java.util.Map">
+		select <include refid="Base_Column_List"/> from sys_file where isDelete = 0
+			<if test="id != null and id != '' ">
+		      and id=#{id}
+	        </if>
+			<if test="name != null and name != '' ">
+		      and name=#{name}
+	        </if>
+			<if test="size != null and size != '' ">
+		      and size=#{size}
+	        </if>
+			<if test="type != null and type != '' ">
+		      and type=#{type}
+	        </if>
+			<if test="suffix != null and suffix != '' ">
+		      and suffix=#{suffix}
+	        </if>
+			<if test="path != null and path != '' ">
+		      and path=#{path}
+	        </if>
+			<if test="isDelete != null and isDelete != '' ">
+		      and isDelete=#{isDelete}
+	        </if>
+			<if test="createTime != null and createTime != '' ">
+		      and createTime=#{createTime}
+	        </if>
+			<if test="updateTime != null and updateTime != '' ">
+		      and updateTime=#{updateTime}
+	        </if>
+			<if test="dirId != null ">
+		      and dirId=#{dirId}
+	        </if>
+			<if test="createUserName != null and createUserName != '' ">
+		      and createUserName=#{createUserName}
+	        </if>
+			<if test="updateUserName != null and updateUserName != '' ">
+		      and updateUserName=#{updateUserName}
+	        </if>
+	</select>
+</mapper>

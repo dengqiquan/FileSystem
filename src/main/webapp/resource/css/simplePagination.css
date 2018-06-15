@@ -1,0 +1,178 @@
+/**
+* CSS themes for simplePagination.js
+* Author: Flavius Matis - http://flaviusmatis.github.com/
+* URL: https://github.com/flaviusmatis/simplePagination.js
+*/
+ul.simple-pagination {
+	list-style: none;
+}
+
+.simple-pagination {
+	display: block;
+	overflow: hidden;
+	padding: 10px;
+	margin: 0;
+}
+
+.simple-pagination ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+.simple-pagination li {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	float: left;
+	text-align: center;
+}
+
+/*------------------------------------*\
+	Compact Theme Styles
+\*------------------------------------*/
+#light-pagination{
+	float:right;
+}
+
+.compact-theme a{
+	float: left;
+	color: #838383;
+	font-size:14px;
+	line-height:30px;
+	font-weight: normal;
+	text-align: center;
+	border-right: none;
+	min-width: 14px;
+	padding: 0 7px;
+}
+.compact-theme span{
+	float: left;
+	font-size:14px;
+	line-height:30px;
+	font-weight: normal;
+	text-align: center;
+	border-right: none;
+	min-width: 14px;
+	padding: 0 7px;
+}
+
+.compact-theme a:hover {
+	background-color:rgb(255,180,0);
+	color:#fff;
+	border:none;
+}
+.compact-theme .current {
+	cursor: default;
+	background-color:rgb(255,180,0);
+	border: 1px solid #ddd;
+	line-height:30px;
+	color:#fff;
+	border:none;
+}
+
+.compact-theme .prev {
+	border-radius: 3px 0 0 3px;
+	color: #838383;
+	background-color:#fff;
+	
+}
+.compact-theme .next {
+	border-radius: 0 3px 3px 0;
+	color: #838383;
+	background-color:#fff;
+}
+
+.compact-theme .ellipse {
+	background: #fff;
+	padding: 0 10px;
+	cursor: default;
+}
+
+/*------------------------------------*\
+	Light Theme Styles
+\*------------------------------------*/
+
+.light-theme a, .light-theme span {
+	float: left;
+	font-size:14px;
+	line-height:30px;
+	font-weight: normal;
+	text-align: center;
+	border: 1px solid #ddd;
+	min-width: 32px;
+	padding: 0 7px;
+	margin-left: -1px;
+	/* background: -moz-linear-gradient(top, #ffffff 0%, #efefef 100%); FF3.6+
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#efefef)); Chrome,Safari4+
+	background: -webkit-linear-gradient(top, #ffffff 0%,#efefef 100%); Chrome10+,Safari5.1+
+	background: -o-linear-gradient(top, #ffffff 0%,#efefef 100%); Opera11.10+
+	background: -ms-linear-gradient(top, #ffffff 0%,#efefef 100%); IE10+
+	background: linear-gradient(top, #ffffff 0%,#efefef 100%); W3C */
+}
+
+.light-theme a:hover {
+	text-decoration: none;
+	background: #FCFCFC;
+}
+
+.light-theme .current {
+	background: #428bca;
+	color: #FFF;
+	cursor: default;
+	border: 1px solid #ddd;
+	line-height: 32px;
+    margin-top: -1px;
+}
+
+.light-theme .ellipse {
+	background: none;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	font-weight: bold;
+	cursor: default;
+}
+
+/*------------------------------------*\
+	Dark Theme Styles
+\*------------------------------------*/
+
+.dark-theme a, .dark-theme span {
+	float: left;
+	color: #CCC;
+	font-size:14px;
+	line-height:30px;
+	font-weight: normal;
+	text-align: center;
+	border: 1px solid #222;
+	min-width: 14px;
+	padding: 0 7px;
+	margin: 0 5px 0 0;
+	border-radius: 3px;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+	background: #555; /* Old browsers */
+}
+
+.dark-theme a:hover {
+	text-decoration: none;
+	background: #444;
+}
+
+.dark-theme .current {
+	background: #222;
+	color: #FFF;
+	cursor: default;
+	border: 1px solid #ddd;
+	line-height:30px;
+}
+
+.dark-theme .ellipse {
+	background: none;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	font-weight: bold;
+	cursor: default;
+}

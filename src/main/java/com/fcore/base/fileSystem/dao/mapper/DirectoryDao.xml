@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fcore.base.fileSystem.dao.DirectoryDao">
+	<resultMap id="result_DirectoryMap" type="com.fcore.base.fileSystem.entity.Directory">
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+	id,name,parentId,createTime,createUserName,updateTime,updateUserName,curPath,isDelete
+	</sql>
+	
+    <!-- 单条新增  -->
+	<insert id="add" parameterType="com.fcore.base.fileSystem.entity.Directory">
+		<![CDATA[
+		INSERT INTO directory(id,name,parentId,createTime,createUserName,updateTime,updateUserName,curPath,isDelete) 
+		VALUES 
+		(#{id},#{name},#{parentId},#{createTime},#{createUserName},#{updateTime},#{updateUserName},#{curPath},#{isDelete})
+		]]>
+		<selectKey resultType="long" keyProperty="id">
+			select @@IDENTITY as id
+		</selectKey>
+    </insert>
+    
+     <!-- 根据id查询 -->
+	<select id="getById" parameterType="long" resultMap="result_DirectoryMap">
+		select <include refid="Base_Column_List"/> from directory where id=#{id}
+	</select>
+	
+	<!-- 分页查询列表 -->
+	<select id="getList"  resultMap="result_DirectoryMap" parameterType="com.fcore.base.fileSystem.entity.Directory">
+    	select <include refid="Base_Column_List"/> from directory
+    	where isDelete = 0
+    	order by id desc 
+    </select>
+    <select id="getCount" parameterType="com.fcore.base.fileSystem.entity.Directory" resultType="int">
+   		 select count(1) from directory
+   		 where isDelete = 0
+    </select>
+
+	
+	<!-- 根据id修改记录 -->
+	<update id="update" parameterType="com.fcore.base.fileSystem.entity.Directory">
+		update directory
+		<trim prefix="set" prefixOverrides=",">
+			<if test="name != null and name != ''">
+			,name = #{name}
+			</if>
+			<if test="parentId != null and parentId >0">
+			,parentId = #{parentId}
+			</if>
+			<if test="createTime != null and createTime != ''">
+			,createTime = #{createTime}
+			</if>
+			<if test="createUserName != null and createUserName != ''">
+			,createUserName = #{createUserName}
+			</if>
+			<if test="updateTime != null and updateTime != ''">
+			,updateTime = #{updateTime}
+			</if>
+			<if test="updateUserName != null and updateUserName != ''">
+			,updateUserName = #{updateUserName}
+			</if>
+			<if test="curPath != null and curPath != ''">
+			,curPath = #{curPath}
+			</if>
+			<if test="isDelete != null and isDelete >0">
+			,isDelete = #{isDelete}
+			</if>
+		</trim>
+		where id=#{id}
+	</update>
+	
+	<!-- 根据条件查询 -->
+	<select id="getByParams" resultMap="result_DirectoryMap" parameterType="java.util.Map">
+		select <include refid="Base_Column_List"/> from directory where isDelete = 0
+			<if test="id != null and id != '' ">
+		      and id=#{id}
+	        </if>
+			<if test="name != null and name != '' ">
+		      and name=#{name}
+	        </if>
+			<if test="parentId != null ">
+		      and parentId=#{parentId}
+	        </if>
+			<if test="createTime != null and createTime != '' ">
+		      and createTime=#{createTime}
+	        </if>
+			<if test="createUserName != null and createUserName != '' ">
+		      and createUserName=#{createUserName}
+	        </if>
+			<if test="updateTime != null and updateTime != '' ">
+		      and updateTime=#{updateTime}
+	        </if>
+			<if test="updateUserName != null and updateUserName != '' ">
+		      and updateUserName=#{updateUserName}
+	        </if>
+			<if test="curPath != null and curPath != '' ">
+		      and curPath=#{curPath}
+	        </if>
+			<if test="isDelete != null and isDelete != '' ">
+		      and isDelete=#{isDelete}
+	        </if>
+	</select>
+	<select id="findForCheckName" resultType="int" parameterType="java.util.Map">
+		select count(1) from directory where isDelete = 0 
+		<if test="id!=null and id>0">
+			and id != #{id}
+		</if>
+		<if test="name!=null and name!=''">
+			and name = #{name}
+		</if>
+		<if test="parentId!=null and parentId>0">
+			and parentId = #{parentId}
+		</if>
+	</select>
+</mapper>

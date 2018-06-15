@@ -1,0 +1,28 @@
+.div_border {
+	border: 1px solid #E8E8E8
+}
+
+.center {
+	padding: 15px;
+}
+.padding_5 {
+	padding: 5px;
+}
+.padding_10 {
+	padding: 10px;
+}
+.padding_15 {
+	padding: 15px;
+}
+.padding_left_bot {
+	padding-left: 15px;
+	padding-bottom: 15px;
+}
+.td-center-all {
+	text-align: center; /*设置水平居中*/
+	vertical-align: middle; /*设置垂直居中*/
+}
+
+.input_no_border {
+	border: none;	
+}

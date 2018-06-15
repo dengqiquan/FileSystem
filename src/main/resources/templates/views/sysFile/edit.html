@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+<meta charset="UTF-8" />
+<title>编辑</title>
+<link th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}" rel="stylesheet" media="screen"></link>
+<link rel="stylesheet" th:href="@{/resource/plugins/position-validate/css/validationEngine.jquery.css}"/>
+<script type="text/javascript" th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/3.2.0/js/bootstrap.min.js}"></script>
+<script th:src="@{/resource/plugins/position-validate/js/jquery.validationEngine-zh_CN.js}"></script>
+<script th:src="@{/resource/plugins/position-validate/js/jquery.validationEngine.js}"></script>
+<script type="text/javascript" th:src="@{/resource/plugins/layer/layer.js}"></script>
+<script type="text/javascript" th:src="@{/resource/js/edit.js}"></script>
+<style type="text/css">
+html { overflow-x: hidden; overflow-y: auto; }
+</style>
+</head>
+<body>
+<div class="container-fluid" style="padding: 30px;">
+	<div class="row">
+		<form data="editForm" class="form-horizontal" id="saveObjForm">
+			<input type="hidden"  name="id" th:value="${sysFile.id}"/>
+    		<table class="table table-bordered" >
+			<tr>
+	    		<td  class="text-r" style="width: 15%">文件名</td>
+	    		<td>
+		     		<input type="text" style="width:20%" name="name"  placeholder="请输入文件名" th:value="${sysFile.name}" class="form-control validate[required]"/>
+	    		</td>
+	    	</tr>
+			<tr>
+	    		<td  class="text-r" style="width: 15%">文件大小</td>
+	    		<td>
+		     		<input type="text" style="width:20%" name="size"  placeholder="请输入文件大小" th:value="${sysFile.size}" class="form-control validate[required]"/>
+	    		</td>
+	    	</tr>
+			<tr>
+	    		<td  class="text-r" style="width: 15%">文件类型</td>
+	    		<td>
+		     		<input type="text" style="width:20%" name="type"  placeholder="请输入文件类型" th:value="${sysFile.type}" class="form-control validate[required]"/>
+	    		</td>
+	    	</tr>
+			<tr>
+	    		<td  class="text-r" style="width: 15%">后缀名</td>
+	    		<td>
+		     		<input type="text" style="width:20%" name="suffix"  placeholder="请输入后缀名" th:value="${sysFile.suffix}" class="form-control validate[required]"/>
+	    		</td>
+	    	</tr>
+			<tr>
+	    		<td  class="text-r" style="width: 15%">文件路径</td>
+	    		<td>
+		     		<input type="text" style="width:20%" name="path"  placeholder="请输入文件路径" th:value="${sysFile.path}" class="form-control validate[required]"/>
+	    		</td>
+	    	</tr>
+			<tr>
+	    		<td  class="text-r" style="width: 15%">是否删除</td>
+	    		<td>
+		     		<input type="text" style="width:20%" name="isDelete"  placeholder="请输入是否删除" th:value="${sysFile.isDelete}" class="form-control validate[required]"/>
+	    		</td>
+	    	</tr>
+			<tr>
+	    		<td  class="text-r" style="width: 15%">创建时间</td>
+	    		<td>
+		     		<input type="text" style="width:20%" name="createTime"  placeholder="请输入创建时间" th:value="${sysFile.createTime}" class="form-control validate[required]"/>
+	    		</td>
+	    	</tr>
+			<tr>
+	    		<td  class="text-r" style="width: 15%">修改时间</td>
+	    		<td>
+		     		<input type="text" style="width:20%" name="updateTime"  placeholder="请输入修改时间" th:value="${sysFile.updateTime}" class="form-control validate[required]"/>
+	    		</td>
+	    	</tr>
+			<tr>
+	    		<td  class="text-r" style="width: 15%">目录ID</td>
+	    		<td>
+		     		<input type="text" style="width:20%" name="dirId"  placeholder="请输入目录ID" th:value="${sysFile.dirId}" class="form-control validate[required]"/>
+	    		</td>
+	    	</tr>
+    </table>
+   </form>
+</div>
+</div>
+</body>
+</html>

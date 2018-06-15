@@ -1,0 +1,15 @@
+.fileIput {
+	filter:alpha(opacity=0); /*IE滤镜，透明度50%*/
+	-moz-opacity:0; /*Firefox私有，透明度50%*/
+	opacity:0;/*其他，透明度50%*/
+	position: absolute;
+	width: 100px;
+}
+#fileBody td ,#fileThead th{
+	border: none;
+	vertical-align:middle;
+}
+#fileBody img {
+	width: 58px;
+	height: 58px;
+}
